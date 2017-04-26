@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Id="d3aedbb5-8faf-480f-a054-371f1d63c473" Scope="Web" Title="Larko.SharePoint.KOComponents">
+  <ElementManifests>
+    <ElementManifest Location="TeamsInstance\Elements.xml" />
+    <ElementManifest Location="Teams\Elements.xml" />
+    <ElementFile Location="Teams\Schema.xml" />
+    <ElementManifest Location="LeaguesInstance\Elements.xml" />
+    <ElementManifest Location="Leagues\Elements.xml" />
+    <ElementFile Location="Leagues\Schema.xml" />
+  </ElementManifests>
+</Feature>

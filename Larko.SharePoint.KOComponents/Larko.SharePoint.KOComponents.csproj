@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{72596ABD-4CF1-49E6-B999-F4FBAE247293}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Larko.SharePoint.KOComponents</RootNamespace>
+    <AssemblyName>Larko.SharePoint.KOComponents</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BB1F664B-9266-4fd6-B973-E1E44974B511};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SandboxedSolution>False</SandboxedSolution>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Layouts\Larko.SharePoint.KOComponents\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Larko.SharePoint.KOComponents\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Features\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents.feature">
+      <FeatureId>{07b00f32-85ee-46e0-871a-38acde6e718d}</FeatureId>
+    </None>
+    <None Include="key.snk" />
+    <None Include="Layouts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b34c2172-cc7c-4178-b9b7-449576f9c5bc}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\Leagues\LeaguesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{594874c8-afea-4ce0-a087-59e548493fc2}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\Leagues\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b123c99b-4cea-4862-99ba-e26fc667b4c9}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\Teams\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1b4baa93-9bda-45a8-92d8-4d03e4d2fe9d}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\Teams\TeamsInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{25629159-f7cb-4f62-b007-a33b585d15d0}</SharePointProjectItemId>
+    </None>
+    <None Include="Package\Package.package">
+      <PackageId>{a37b4ddb-4467-424a-8476-7ee7bfd4a390}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <TypeScriptCompile Include="App\App.ts" />
+    <TypeScriptCompile Include="App\Components\DataTable\DataTableBase.ts" />
+    <TypeScriptCompile Include="App\Components\DataTable\DataTableColumn.ts" />
+    <TypeScriptCompile Include="App\Config.ts" />
+    <TypeScriptCompile Include="App\Models\Item.ts" />
+    <TypeScriptCompile Include="App\Models\League.ts" />
+    <TypeScriptCompile Include="App\Models\Player.ts" />
+    <TypeScriptCompile Include="App\Models\Team.ts" />
+    <TypeScriptCompile Include="App\Resources\Api.ts" />
+    <TypeScriptCompile Include="App\Resources\Constants.ts" />
+    <TypeScriptCompile Include="App\Resources\KnockoutExtensions.ts" />
+    <TypeScriptCompile Include="App\Resources\Query.ts" />
+    <TypeScriptCompile Include="App\Services\DataService.ts" />
+    <TypeScriptCompile Include="custom_typings\KnockoutExtensions.d.ts" />
+    <TypeScriptCompile Include="custom_typings\TeamManager.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\Components\DataTable\DataTable.html" />
+    <Content Include="Features\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents.Template.xml">
+      <DependentUpon>Larko.SharePoint.KOComponents.feature</DependentUpon>
+    </Content>
+    <Content Include="gulpfile.js" />
+    <Content Include="Layouts\Larko.SharePoint.KOComponents\Demo.js" />
+    <Content Include="Layouts\Larko.SharePoint.KOComponents\Demo.Vendor.js" />
+    <Content Include="Layouts\Larko.SharePoint.KOComponents\Index.aspx" />
+    <Content Include="Lists\Leagues\Elements.xml" />
+    <Content Include="Lists\Leagues\LeaguesInstance\Elements.xml" />
+    <Content Include="Lists\Leagues\Schema.xml" />
+    <Content Include="Lists\Teams\Elements.xml" />
+    <Content Include="Lists\Teams\Schema.xml" />
+    <Content Include="Lists\Teams\TeamsInstance\Elements.xml" />
+    <Content Include="webpack.config.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

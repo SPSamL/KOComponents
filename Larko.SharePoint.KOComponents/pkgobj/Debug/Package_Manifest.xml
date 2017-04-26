@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="a37b4ddb-4467-424a-8476-7ee7bfd4a390" SharePointProductVersion="14.0">
+  <Assemblies>
+    <Assembly Location="Larko.SharePoint.KOComponents.dll" DeploymentTarget="GlobalAssemblyCache" />
+  </Assemblies>
+  <TemplateFiles>
+    <TemplateFile Location="Layouts\Larko.SharePoint.KOComponents\Demo.js" />
+    <TemplateFile Location="Layouts\Larko.SharePoint.KOComponents\Demo.Vendor.js" />
+    <TemplateFile Location="Layouts\Larko.SharePoint.KOComponents\Index.aspx" />
+  </TemplateFiles>
+  <FeatureManifests>
+    <FeatureManifest Location="Larko.SharePoint.KOComponents_Larko.SharePoint.KOComponents\Feature.xml" />
+  </FeatureManifests>
+</Solution>

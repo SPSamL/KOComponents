@@ -1,0 +1,13 @@
+C:\GitSource\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents\bin\Debug\Larko.SharePoint.KOComponents.dll
+C:\GitSource\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents\bin\Debug\Larko.SharePoint.KOComponents.pdb
+C:\GitSource\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents\bin\Debug\Microsoft.SharePoint.dll
+C:\GitSource\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents\bin\Debug\Microsoft.SharePoint.Search.dll
+C:\GitSource\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents\bin\Debug\Microsoft.Web.CommandUI.dll
+C:\GitSource\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents\bin\Debug\Microsoft.BusinessData.dll
+C:\GitSource\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents\bin\Debug\Microsoft.SharePoint.Security.dll
+C:\GitSource\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents\bin\Debug\Microsoft.SharePoint.xml
+C:\GitSource\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents\bin\Debug\Microsoft.SharePoint.Search.xml
+C:\GitSource\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents\bin\Debug\Microsoft.BusinessData.xml
+C:\GitSource\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents\bin\Debug\Microsoft.SharePoint.Security.xml
+C:\GitSource\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents\obj\Debug\Larko.SharePoint.KOComponents.dll
+C:\GitSource\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents\obj\Debug\Larko.SharePoint.KOComponents.pdb

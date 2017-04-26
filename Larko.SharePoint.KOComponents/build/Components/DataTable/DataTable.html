@@ -1,0 +1,60 @@
+
+<table class="table table-bordered table-striped table-paged">
+    <thead>
+        <tr>
+            <!-- ko foreach: settings().columns -->
+            <th class="ui-state-default datatable-column-header">
+                <span data-bind="text: header"></span>
+            </th>
+            <!-- /ko -->
+        </tr>
+    </thead>
+
+
+    <!-- ko if: processedRows().length <= 0 -->
+    <tbody>
+        <tr>
+            <td class="text-center" colspan="44">
+                None found.
+            </td>
+        </tr>
+    </tbody>
+    <!-- /ko -->
+    <!-- ko if: processedRows().length > 0 -->
+    <tbody data-bind="foreach: processedRows">
+        <tr data-bind="css: { danger : errors().length > 0 }">
+            <!-- ko foreach: cells -->
+            <!-- ko if: $data.column.cellTemplate -->
+            <td data-bind='template: {
+                                name: $data.column.cellTemplate,
+                                data: $parent.item }'></td>
+            <!-- /ko -->
+            <!-- ko ifnot: $data.column.cellTemplate -->
+            <!-- ko ifnot: $data.column.cellRenderer-->
+            <td data-bind="text: $data.value"></td>
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- /ko -->
+        </tr>
+    </tbody>
+    <!-- ko with: footerRow -->
+    <tfoot>
+        <tr data-bind="foreach: cells">
+            <td>
+                <strong data-bind="text: value"></strong>
+            </td>
+        </tr>
+    </tfoot>
+    <!-- /ko -->
+    <!-- /ko -->
+</table>
+<!-- ko if: settings().showPagination && settings().showPagination() && settings().currentPage && settings().currentPage() > 0 -->
+<div class="fg-toolbar ui-toolbar ui-widget-header ui-helper-clearfix ui-corner-bl ui-corner-br">
+    <div class="dataTables_info">Showing <span data-bind="text: showingMax() > 0 ? showingMin : 0 "></span> to <span data-bind="text: showingMax"></span> of <span data-bind="text: totalItems"></span> entries</div>
+    <div class="dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi ui-buttonset-multi paging_simple_numbers">
+        <a class="fg-button ui-button ui-state-default previous" data-bind="click: settings().currentPage() == 1 ? null : pagePrev, css: { 'ui-state-disabled' : settings().currentPage() == 1 } ">Previous</a>
+        <a class="fg-button ui-button ui-state-default ui-state-disabled" data-bind="text: settings().currentPage"></a>
+        <a class="fg-button ui-button ui-state-default next" data-bind="click: settings().currentPage() >= lastPage() ? null : pageNext, css: { 'ui-state-disabled' : settings().currentPage() >= lastPage() }">Next</a>
+    </div>
+</div>
+<!-- /ko -->

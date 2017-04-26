@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance Title="Leagues" OnQuickLaunch="TRUE" TemplateType="10010" Url="Lists/Leagues" Description="My List Instance">
+    <Data>
+      <Rows>
+        <Row>
+          <Field Name="ID">1</Field>
+          <Field Name="Title">MLB</Field>
+          <Field Name="Sport">Baseball</Field>
+          <Field Name="Level">Major</Field>
+        </Row>
+      </Rows>
+    </Data>
+  </ListInstance>
+</Elements>

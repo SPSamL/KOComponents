@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="a37b4ddb-4467-424a-8476-7ee7bfd4a390" solutionId="a37b4ddb-4467-424a-8476-7ee7bfd4a390" resetWebServer="false" name="Larko.SharePoint.KOComponents" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="07b00f32-85ee-46e0-871a-38acde6e718d" />
+  </features>
+  <projectItems>
+    <projectItemReference itemId="b34c2172-cc7c-4178-b9b7-449576f9c5bc" />
+  </projectItems>
+</package>
