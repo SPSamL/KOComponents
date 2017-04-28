@@ -74,8 +74,8 @@ gulp.task('less:compile', ['less:bootstrap'], function () {
         }))
         .pipe(gulp.dest('build'))
         //.pipe(cleanCss())
-        .pipe(concat('OSD.DoDCTS.Hearings.min.css'))
-        .pipe(gulp.dest('./Modules/Larko_SharePoint_KOComponent_Content/css/'));
+        .pipe(concat('Demo.min.css'))
+        .pipe(gulp.dest('./Layouts/Larko.SharePoint.KOComponents'));
 });
 
 gulp.task('less', ['less:compile']);

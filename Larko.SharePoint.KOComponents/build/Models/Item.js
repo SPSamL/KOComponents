@@ -5,7 +5,7 @@ define(["require", "exports", "../Resources/Api"], function (require, exports, A
             this.id = ko.observable();
             this.title = ko.observable().trackChanges();
             this.created = ko.observable();
-            this.modified = ko.observable();
+            this.modified = ko.observable().trackChanges();
             if (jsonItem) {
                 this.id(jsonItem.Id);
                 this.title(jsonItem.Title);

@@ -5,7 +5,7 @@ export class Item {
     id: KnockoutObservable<number> = ko.observable<number>();
     title: KnockoutObservable<string> = ko.observable<string>().trackChanges();
     created: KnockoutObservable<Date> = ko.observable<Date>();
-    modified: KnockoutObservable<Date> = ko.observable<Date>();
+    modified: KnockoutObservable<Date> = ko.observable<Date>().trackChanges();
 
     constructor(jsonItem: IItem, listProperties: IListProperties) {
         if (jsonItem) {

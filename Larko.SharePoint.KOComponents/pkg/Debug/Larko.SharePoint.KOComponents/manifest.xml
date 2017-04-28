@@ -5,6 +5,7 @@
   </Assemblies>
   <TemplateFiles>
     <TemplateFile Location="Layouts\Larko.SharePoint.KOComponents\Demo.js" />
+    <TemplateFile Location="Layouts\Larko.SharePoint.KOComponents\Demo.min.css" />
     <TemplateFile Location="Layouts\Larko.SharePoint.KOComponents\Demo.Vendor.js" />
     <TemplateFile Location="Layouts\Larko.SharePoint.KOComponents\Index.aspx" />
   </TemplateFiles>

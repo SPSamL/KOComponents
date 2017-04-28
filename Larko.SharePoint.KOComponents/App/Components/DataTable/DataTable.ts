@@ -19,8 +19,7 @@ export interface DataTableCell {
     value?: KnockoutObservable<string>;
 }
 
-export class DataTableBase<T extends DataTableColumnConfig> {
-
+export class DataTable {
     settings: KnockoutObservable<DataTableSettings> = ko.observable<DataTableSettings>({
         items: ko.observableArray<any>([]),
         columns: ko.observableArray([]),
@@ -29,7 +28,6 @@ export class DataTableBase<T extends DataTableColumnConfig> {
 
     pageSize: KnockoutObservable<number> = ko.observable<number>(10);
     totalItems = ko.observable<number>(0);
-    sortColumn = ko.observable<T>();
     showingMin: KnockoutComputed<number> = ko.computed(() => {
         if (this.settings() && this.settings().currentPage && this.settings().currentPage() && this.pageSize()) {
             return (this.settings().currentPage() - 1) * this.pageSize() + 1;
@@ -77,12 +75,12 @@ export class DataTableBase<T extends DataTableColumnConfig> {
         }
     }
 
-    constructor(params: KnockoutObservable<DataTableSettings>) {
+    constructor(params: ComponentParameters) {
         if (!params) {
             return;
         }
 
-        this.mergeSettings(this.settings, params);
+        this.mergeSettings(this.settings, params.settings);
 
         this.settings().currentPage = this.settings().currentPage;
         this.initRows();
@@ -174,7 +172,7 @@ export class DataTableBase<T extends DataTableColumnConfig> {
         return totalRowIsUsed ? footerRow : null;
     });
 
-    mergeSettings(defaultSettings: KnockoutObservable<DataTableSettings>, newSettings: KnockoutObservable<DataTableSettings> | DataTableSettings) {
+    mergeSettings(defaultSettings: KnockoutObservable<ComponentSettings>, newSettings: KnockoutObservable<ComponentSettings> | ComponentSettings) {
         if (ko.isObservable(newSettings)) {
             newSettings = newSettings();
         }
@@ -192,6 +190,6 @@ export class DataTableBase<T extends DataTableColumnConfig> {
 }
 
 export let component = ko.components.register("data-table", {
-    viewModel: DataTableBase,
+    viewModel: DataTable,
     template: templateHtml
 });

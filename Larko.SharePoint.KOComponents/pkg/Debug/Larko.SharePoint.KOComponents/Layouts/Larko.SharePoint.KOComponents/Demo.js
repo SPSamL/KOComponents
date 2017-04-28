@@ -70,7 +70,7 @@ webpackJsonp([0],{
 	        App.prototype.loadLeagueTeams = function () {
 	            var _this = this;
 	            var query = new Query_1.Query("Teams", _spPageContextInfo.siteServerRelativeUrl)
-	                .filter("League/ID eq " + this.selectedLeague().id())
+	                .filter("LeagueId eq " + this.selectedLeague().id())
 	                .orderBy('Title');
 	            DataService_1.DataService.getByQuery(query).then(function (teams) {
 	                ko.utils.arrayForEach(teams, function (team) {
@@ -92,9 +92,9 @@ webpackJsonp([0],{
 	                        }
 	                    }),
 	                    new DataTableColumn_1.DataTableColumnConfig({
-	                        header: "Commissioner",
+	                        header: "Sport",
 	                        cellText: function (league) {
-	                            return league.Commissioner;
+	                            return league.SportValue;
 	                        }
 	                    })
 	                ]),
@@ -166,16 +166,10 @@ webpackJsonp([0],{
 	        __extends(League, _super);
 	        function League(league) {
 	            var _this = _super.call(this, league, Api_1.Api.lists.leagues) || this;
-	            _this.Commissioner = ko.observable();
-	            _this.Teams = ko.observableArray([]);
-	            _this.NumberOfTeams = ko.computed(function () {
-	                if (_this.Teams) {
-	                    return _this.Teams().length;
-	                }
-	                else {
-	                    return 0;
-	                }
-	            });
+	            _this.Commissioner = ko.observable().trackChanges();
+	            _this.SportValue = ko.observable().trackChanges();
+	            _this.Teams = ko.observableArray([]).trackChanges();
+	            _this.SportValue(league.SportValue);
 	            return _this;
 	        }
 	        return League;
@@ -310,7 +304,7 @@ webpackJsonp([0],{
 	            this.id = ko.observable();
 	            this.title = ko.observable().trackChanges();
 	            this.created = ko.observable();
-	            this.modified = ko.observable();
+	            this.modified = ko.observable().trackChanges();
 	            if (jsonItem) {
 	                this.id(jsonItem.Id);
 	                this.title(jsonItem.Title);
@@ -477,10 +471,10 @@ webpackJsonp([0],{
 	        __extends(Team, _super);
 	        function Team(team) {
 	            var _this = _super.call(this, team, Api_1.Api.lists.teams) || this;
-	            _this.Owner = ko.observable();
+	            _this.Owner = ko.observable().trackChanges();
 	            _this.Players = ko.observableArray([]);
-	            _this.League = ko.observable();
-	            _this.LeagueValue = ko.observable();
+	            _this.League = ko.observable().trackChanges();
+	            _this.LeagueValue = ko.observable().trackChanges();
 	            _this.Owner(team.Owner);
 	            _this.LeagueValue(team.LeagueValue);
 	            return _this;
@@ -769,8 +763,8 @@ webpackJsonp([0],{
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(ko, $) {!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports) {
 	    "use strict";
 	    var templateHtml = __webpack_require__(343);
-	    var DataTableBase = (function () {
-	        function DataTableBase(params) {
+	    var DataTable = (function () {
+	        function DataTable(params) {
 	            var _this = this;
 	            this.settings = ko.observable({
 	                items: ko.observableArray([]),
@@ -779,7 +773,6 @@ webpackJsonp([0],{
 	            });
 	            this.pageSize = ko.observable(10);
 	            this.totalItems = ko.observable(0);
-	            this.sortColumn = ko.observable();
 	            this.showingMin = ko.computed(function () {
 	                if (_this.settings() && _this.settings().currentPage && _this.settings().currentPage() && _this.pageSize()) {
 	                    return (_this.settings().currentPage() - 1) * _this.pageSize() + 1;
@@ -837,29 +830,29 @@ webpackJsonp([0],{
 	            if (!params) {
 	                return;
 	            }
-	            this.mergeSettings(this.settings, params);
+	            this.mergeSettings(this.settings, params.settings);
 	            this.settings().currentPage = this.settings().currentPage;
 	            this.initRows();
 	        }
-	        DataTableBase.prototype.pageNext = function () {
+	        DataTable.prototype.pageNext = function () {
 	            if (this.settings() && this.settings().currentPage && this.settings().currentPage()) {
 	                var nextPage = this.settings().currentPage() + 1;
 	                this.settings().currentPage(nextPage);
 	            }
 	        };
-	        DataTableBase.prototype.pagePrev = function () {
+	        DataTable.prototype.pagePrev = function () {
 	            if (this.settings() && this.settings().currentPage && this.settings().currentPage()) {
 	                var prevPage = this.settings().currentPage() - 1;
 	                this.settings().currentPage(prevPage);
 	            }
 	        };
-	        DataTableBase.prototype.initRows = function () {
+	        DataTable.prototype.initRows = function () {
 	            // Render the array provided
 	            this.renderRows(this.settings().items());
 	            // Subscribe to the array provided. We will re-render rows when it changes.
 	            this.subscribeToItemChanges();
 	        };
-	        DataTableBase.prototype.subscribeToItemChanges = function () {
+	        DataTable.prototype.subscribeToItemChanges = function () {
 	            var _this = this;
 	            this.settings().items.subscribe(function (changes) {
 	                _this.renderRows(_this.settings().items());
@@ -868,7 +861,7 @@ webpackJsonp([0],{
 	        /**
 	         * Renders (or re-renders) all of the rows.
 	         */
-	        DataTableBase.prototype.renderRows = function (itemsToRender) {
+	        DataTable.prototype.renderRows = function (itemsToRender) {
 	            var _this = this;
 	            var newRows = [];
 	            ko.utils.arrayForEach(itemsToRender, function (item) {
@@ -880,7 +873,7 @@ webpackJsonp([0],{
 	         * Using the column configuration and the raw Items array, build an array of rows.
 	         * @param item
 	         */
-	        DataTableBase.prototype.renderRow = function (item) {
+	        DataTable.prototype.renderRow = function (item) {
 	            var row = {
 	                cells: [],
 	                item: item,
@@ -895,7 +888,7 @@ webpackJsonp([0],{
 	            });
 	            return row;
 	        };
-	        DataTableBase.prototype.mergeSettings = function (defaultSettings, newSettings) {
+	        DataTable.prototype.mergeSettings = function (defaultSettings, newSettings) {
 	            if (ko.isObservable(newSettings)) {
 	                newSettings = newSettings();
 	            }
@@ -905,14 +898,14 @@ webpackJsonp([0],{
 	            var settings2 = $.extend({}, defaultSettings(), newSettings);
 	            defaultSettings(settings2);
 	        };
-	        DataTableBase.modelActivator = function (type, jsonItem) {
+	        DataTable.modelActivator = function (type, jsonItem) {
 	            return new type(jsonItem);
 	        };
-	        return DataTableBase;
+	        return DataTable;
 	    }());
-	    exports.DataTableBase = DataTableBase;
+	    exports.DataTable = DataTable;
 	    exports.component = ko.components.register("data-table", {
-	        viewModel: DataTableBase,
+	        viewModel: DataTable,
 	        template: templateHtml
 	    });
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));

@@ -9,10 +9,10 @@ define(["require", "exports", "./Item", "../Resources/Api"], function (require, 
         __extends(Team, _super);
         function Team(team) {
             var _this = _super.call(this, team, Api_1.Api.lists.teams) || this;
-            _this.Owner = ko.observable();
+            _this.Owner = ko.observable().trackChanges();
             _this.Players = ko.observableArray([]);
-            _this.League = ko.observable();
-            _this.LeagueValue = ko.observable();
+            _this.League = ko.observable().trackChanges();
+            _this.LeagueValue = ko.observable().trackChanges();
             _this.Owner(team.Owner);
             _this.LeagueValue(team.LeagueValue);
             return _this;

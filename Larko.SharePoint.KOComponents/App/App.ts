@@ -1,5 +1,5 @@
 ﻿import { Api } from './Resources/Api';
-import { DataTableSettings, DataTableBase } from './Components/DataTable/DataTableBase';
+import { DataTableSettings, DataTable } from './Components/DataTable/DataTable';
 import { DataTableColumnConfig } from './Components/DataTable/DataTableColumn';
 import { League } from './Models/League';
 import { Team } from './Models/Team';
@@ -18,10 +18,10 @@ export class App {
 
     constructor() {
         JSRequest.EnsureSetup();
-        
-        this.configureLeagueList();
-        this.configureTeamList();
 
+            this.configureLeagueList();
+            this.configureTeamList();
+        
         var query: Query = new Query("Leagues", _spPageContextInfo.siteServerRelativeUrl)
             .orderBy("Title")
             .expand("Sport")
@@ -44,7 +44,7 @@ export class App {
 
     loadLeagueTeams() {
         var query: Query = new Query("Teams", _spPageContextInfo.siteServerRelativeUrl)
-            .filter(`League/ID eq ${this.selectedLeague().id()}`)
+            .filter(`LeagueId eq ${this.selectedLeague().id()}`)
             .orderBy('Title');
 
         DataService.getByQuery(query).then((teams: Array<ITeam>) => {
@@ -68,9 +68,9 @@ export class App {
                     }
                 }),
                 new DataTableColumnConfig({
-                    header: "Commissioner",
+                    header: "Sport",
                     cellText: (league: League) => {
-                        return league.Commissioner;
+                        return league.SportValue;
                     }
                 })
             ]),

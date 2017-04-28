@@ -28,7 +28,7 @@ define(["require", "exports", "./Components/DataTable/DataTableColumn", "./Model
         App.prototype.loadLeagueTeams = function () {
             var _this = this;
             var query = new Query_1.Query("Teams", _spPageContextInfo.siteServerRelativeUrl)
-                .filter("League/ID eq " + this.selectedLeague().id())
+                .filter("LeagueId eq " + this.selectedLeague().id())
                 .orderBy('Title');
             DataService_1.DataService.getByQuery(query).then(function (teams) {
                 ko.utils.arrayForEach(teams, function (team) {
@@ -50,9 +50,9 @@ define(["require", "exports", "./Components/DataTable/DataTableColumn", "./Model
                         }
                     }),
                     new DataTableColumn_1.DataTableColumnConfig({
-                        header: "Commissioner",
+                        header: "Sport",
                         cellText: function (league) {
-                            return league.Commissioner;
+                            return league.SportValue;
                         }
                     })
                 ]),

@@ -85,12 +85,15 @@
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
     </None>
+    <None Include="Styles\bootstrap.less" />
+    <None Include="Styles\bundle.less" />
+    <None Include="Styles\variables.less" />
     <None Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="App\App.ts" />
-    <TypeScriptCompile Include="App\Components\DataTable\DataTableBase.ts" />
+    <TypeScriptCompile Include="App\Components\DataTable\DataTable.ts" />
     <TypeScriptCompile Include="App\Components\DataTable\DataTableColumn.ts" />
     <TypeScriptCompile Include="App\Config.ts" />
     <TypeScriptCompile Include="App\Models\Item.ts" />
@@ -106,12 +109,14 @@
     <TypeScriptCompile Include="custom_typings\TeamManager.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="App\Components\DataTable\DataTable.html" />
     <Content Include="Features\Larko.SharePoint.KOComponents\Larko.SharePoint.KOComponents.Template.xml">
       <DependentUpon>Larko.SharePoint.KOComponents.feature</DependentUpon>
     </Content>
     <Content Include="gulpfile.js" />
     <Content Include="Layouts\Larko.SharePoint.KOComponents\Demo.js" />
+    <Content Include="Layouts\Larko.SharePoint.KOComponents\Demo.min.css" />
     <Content Include="Layouts\Larko.SharePoint.KOComponents\Demo.Vendor.js" />
     <Content Include="Layouts\Larko.SharePoint.KOComponents\Index.aspx" />
     <Content Include="Lists\Leagues\Elements.xml" />

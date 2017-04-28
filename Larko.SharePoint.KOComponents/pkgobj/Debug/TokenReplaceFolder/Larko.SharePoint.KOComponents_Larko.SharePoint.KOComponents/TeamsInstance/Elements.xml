@@ -6,6 +6,7 @@
         <Row>
           <Field Name="ID">1</Field>
           <Field Name="Title">St. Louis Cardinals</Field>
+          <Field Name="Owner">Bill DeWitt, Jr.</Field>
           <Field Name="League">1</Field>
         </Row>
       </Rows>

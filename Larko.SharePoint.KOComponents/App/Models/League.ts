@@ -3,22 +3,13 @@ import { Item } from './Item';
 import { Team } from './Team';
 
 export class League extends Item {
-    Commissioner: KnockoutObservable<string> = ko.observable<string>();
-
-    Teams: KnockoutObservableArray<Team> = ko.observableArray<Team>([]);
-
-    NumberOfTeams: KnockoutComputed<number> = ko.computed<number>(() => {
-        if (this.Teams) {
-            return this.Teams().length;
-        }
-        else {
-            return 0;
-        }
-    });
-
+    Commissioner: KnockoutObservable<string> = ko.observable<string>().trackChanges();
+    SportValue: KnockoutObservable<string> = ko.observable<string>().trackChanges();
+    Teams: KnockoutObservableArray<Team> = ko.observableArray<Team>([]).trackChanges();
+    
     constructor(league: ILeague) {
         super(league, Api.lists.leagues);
-
+        this.SportValue(league.SportValue)
 
     }
 }

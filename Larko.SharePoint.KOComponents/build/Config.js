@@ -12,7 +12,7 @@ define(["require", "exports", "./App", "./Resources/KnockoutExtensions"], functi
         }
         require('es6-promise/auto');
         KnockoutExtensions_1.KnockoutExtensions.Init();
-        require("./Components/DataTable/DataTableBase");
+        require("./Components/DataTable/DataTable");
         SP.SOD.executeFunc('sp.js', 'SP.ClientContext', function () {
             // Start the app
             var app = new App_1.App();

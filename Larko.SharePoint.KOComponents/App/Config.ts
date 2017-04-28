@@ -15,7 +15,7 @@ $(() => {
     
     KnockoutExtensions.Init();
     
-    require("./Components/DataTable/DataTableBase");
+    require("./Components/DataTable/DataTable");
 
     SP.SOD.executeFunc('sp.js', 'SP.ClientContext', () => {
         // Start the app
